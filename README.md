@@ -1,8 +1,8 @@
 # dxfexec
 Extracting specific text data from DXF files and organizing it into an XML format such as:
 
-Code: asd123
-Material: W700
+Code: part-10-01
+Material: S700
 Thickness: 10 mm
 Quantity: 2
 
