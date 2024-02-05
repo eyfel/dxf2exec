@@ -13,24 +13,24 @@ def extract_attributes(text):
     return attributes
 
 
-def extract_kod_texts_from_dxf(file_path):
+def extract_code_texts_from_dxf(file_path):
     doc = ezdxf.readfile(file_path)
     msp = doc.modelspace()
 
-    kod_texts = []
+    code_texts = []
 
     for text in msp.query('TEXT MTEXT'):
         text_content = text.plain_text().strip()
         if text_content.startswith("Code:"):
-            kod_attributes = extract_attributes(text_content)
-            kod_texts.append(kod_attributes)
+            code_attributes = extract_attributes(text_content)
+            code_texts.append(code_attributes)
 
-    return kod_texts
+    return code_texts
 
 dxf_file_path = "example.dxf"
-extracted_kod_texts = extract_kod_texts_from_dxf(dxf_file_path)
+extracted_code_texts = extract_code_texts_from_dxf(dxf_file_path)
 
-df = pd.DataFrame(extracted_kod_texts)
+df = pd.DataFrame(extracted_code_texts)
 
 excel_file_path = "part_list.xlsx"
 df.to_excel(excel_file_path, index=False)
